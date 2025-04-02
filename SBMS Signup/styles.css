@@ -1,0 +1,74 @@
+body {
+    background-color: #ffffff;
+    font-family: 'Sen';
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-container {
+    position: absolute;
+    width: 500px;
+    height: 700px;
+    left: 65%;
+    top: 10%;
+    background-color: #222222;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.signup-header {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.input-box {
+    width: 380px;
+    height: 45px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: none;
+    background: #F0F5FA;
+    font-size: 12px;
+    padding-left: 15px;
+}
+
+label {
+    display: block;
+    font-size: 10px;
+    color: #EEEEEE;
+    margin-top: 10px;
+    text-transform: uppercase;
+    position:absolute;
+    left: 55px;
+}
+
+.signup-button {
+    width: 395px;
+    height: 45px;
+    background: #FDE6D4;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: 'Sen';
+}
+
+.signup-button:hover {
+    background: #fcd2b3;
+}
+.sbms_logo {
+    width: 500px;
+    height: 500px;
+    margin-top: 45%;
+    margin-bottom: 20px;
+    position: absolute;
+    left: 20%;
+}

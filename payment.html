@@ -27,7 +27,6 @@
         background-color: #fff;
       }
 
-      /* Header Styles */
       .main-header {
         width: 100%;
         height: 180px;
@@ -74,7 +73,6 @@
         cursor: pointer;
       }
 
-      /* Logo Section Styles */
       .logo-section {
         display: flex;
         justify-content: center;
@@ -97,10 +95,19 @@
         height: 105px;
       }
 
-      /* Main Content Styles */
       .main-content {
         padding: 0 32px;
         margin-top: 44px;
+        text-align: center;
+      }
+
+      .payment-image {
+        width: 80px;
+        height: 80px;
+        background-color: #e5e6f1;
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 20px;
       }
 
       .navigation-controls {
@@ -140,7 +147,6 @@
         cursor: pointer;
       }
 
-      /* Product Section Styles */
       .product-section {
         margin-top: 32px;
         background-color: #fff;
@@ -191,7 +197,6 @@
         justify-content: center;
       }
 
-      /* Table Styles */
       .table-container {
         width: 100%;
       }
@@ -219,7 +224,7 @@
 
       .table-row {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr)); 
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 1px;
         padding: 16px 0;
         border-bottom: 1px solid #000;
@@ -233,7 +238,6 @@
         border-bottom: none;
       }
 
-      /* Accessibility Enhancements */
       button:focus,
       a:focus {
         outline: 2px solid #1f214d;
@@ -288,7 +292,7 @@
       </header>
 
       <main class="main-content">
-        <img src="https://ibb.co/dwPkxxPv?fbclid=IwY2xjawJabZdleHRuA2FlbQIxMQABHUUF56FWw7ABL0czZfNhKysh72okSn2Hmwz2scg5GvyOZnk0frn-5nJ-mQ_aem_rtAvvRtz2x9pkJfiHTVnLg" alt="" class="payment-image" />
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4401ab9733b3c5a9dc296de1ce19559c9a7235e1" alt="Payment Icon" class="payment-image" />
         <h1 class="section-title">Payment</h1>
         <div class="table-container">
           <div class="table-header">
@@ -311,11 +315,10 @@
         const row = document.createElement('div');
         row.classList.add('table-row');
         row.innerHTML = 
-          <div><input type="text" placeholder="Payer Name" /></div>
-          <div><input type="number" placeholder="Amount" /></div>
-          <div><input type="date" /></div>
-          <div><input type="text" placeholder="Payment Method" /></div>
-        ;
+          `<div><input type="text" placeholder="Payer Name" /></div>
+           <div><input type="number" placeholder="Amount" /></div>
+           <div><input type="date" /></div>
+           <div><input type="text" placeholder="Payment Method" /></div>`;
         tableBody.appendChild(row);
       }
 

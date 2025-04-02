@@ -258,6 +258,12 @@
         .table-row {
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
+	
+	.title-divider {
+  	  border: 0;
+          border-top: 2px solid #000; 
+           margin: 16px 0; 
+}
 
         .header-cell:nth-child(n + 4),
         .table-row > div:nth-child(n + 4) {
@@ -306,6 +312,8 @@
 
         <section class="product-section">
           <h1 class="section-title">Product</h1>
+	
+	 <hr class="title-divider">
 
           <div class="search-container">
             <div class="search-input">

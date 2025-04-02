@@ -24,24 +24,26 @@
         font-family: "Sen", sans-serif;
         background-color: #fff;
         color: #fff;
+        overflow: hidden; /* Prevent scrolling */
       }
 
       /* Flex container for logo and form */
       .container {
         display: flex;
         align-items: center;
-        min-height: 100vh;
         justify-content: center;
+        min-height: 100vh;
         background-color: #fff;
         padding: 0 20px;
+        overflow: hidden; /* Prevent scrolling */
       }
 
       /* Logo styles */
       .logo {
         width: 100%; /* Adjust logo size */
         height: auto;
-        max-width: 500px; /* Make the logo nearly the size of the container */
-        margin-right: 40px; /* Space between logo and form */
+        max-width: 400px; /* Make the logo smaller */
+        margin-right: 20px; /* Reduced space between logo and form */
       }
 
       /* Updated styles for the login container */
@@ -53,11 +55,13 @@
       }
 
       .login-card {
-        width: 700px;
+        width: 500px; /* Reduce width of the form */
         padding: 16px 32px;
         border-radius: 20px;
         border: 1px solid #0d0c10;
         background-color: #222;
+        max-height: 650px; /* Limit height of the card */
+        overflow-y: auto; /* Enable scroll inside the card if content overflows */
       }
 
       @media (max-width: 991px) {
@@ -79,16 +83,9 @@
       .welcome-heading {
         color: #fff;
         text-align: center;
-        font-size: 35px;
+        font-size: 30px; /* Reduced font size */
         font-weight: 700;
-        margin: 40px 0 60px;
-      }
-
-      @media (max-width: 640px) {
-        .welcome-heading {
-          font-size: 28px;
-          margin: 30px 0 40px;
-        }
+        margin: 20px 0 30px;
       }
 
       /* Login form */

@@ -114,12 +114,12 @@ li a {
     position: absolute;
     width: 190px;
     height: 150px;
-    top: 15%;
+    top: 18%;
     background-color: #E5E6F1;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 15%;
+    left: 20%;
     border-radius: 20px;
 }
 
@@ -127,12 +127,12 @@ li a {
     position: absolute;
     width: 190px;
     height: 150px;
-    top: 15%;
+    top: 18%;
     background-color: #E5E6F1;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 30%;
+    left: 36%;
     border-radius: 20px;
 }
 
@@ -140,24 +140,24 @@ li a {
     position: absolute;
     width: 190px;
     height: 150px;
-    top: 15%;
+    top: 18%;
     background-color: #E5E6F1;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 45%;
+    left: 52%;
     border-radius: 20px;
 }
 .Liver-logo-container {
     position: absolute;
     width: 190px;
     height: 150px;
-    top: 15%;
+    top: 18%;
     background-color: #E5E6F1;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 67%;
+    left: 67.5%;
     border-radius: 20px;
 }
 .ChickenBlood-logo-container {

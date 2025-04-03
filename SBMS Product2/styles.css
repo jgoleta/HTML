@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600&display=swap');  
 body {
     overflow: hidden;
     margin: 0px;
@@ -5,171 +6,193 @@ body {
     height: 100%;
     background: #ffffff;
 }
-.page-design {
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    top: 25%;
-    left: -4.2%;
-}
-.login-container {
-    position: absolute;
-    width: 500px;
-    height: 700px;
-    left: 65%;
-    top: 10%;
-    background-color: #222222;
-    border-radius: 10px;
-    text-align: center;
-}
 
-.login-header {
-    color: #FFFFFF;
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 50px;
-}
-
-.input-box {
-    width: 380px;
-    height: 45px;
-    margin-top: 30px;
-    border-radius: 10px;
-    border: none;
-    background: #F0F5FA;
-    font-size: 12px;
+.navigation-top {
+    text-decoration: none;
+    background: #222222;
+    font-family: 'Sen', sans-serif;
+    padding-right: 15px;
     padding-left: 15px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
-label {
-    display: block;
-    font-size: 10px;
-    color: #EEEEEE;
-    margin-top: 10px;
-    text-transform: uppercase;
-    position:absolute;
-    left: 55px;
-}
-
-.login-button {
-    width: 395px;
-    height: 45px;
-    background: #FDE6D4;
-    color: #000000;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 10px;
-    border: none;
-    margin-top: 20px;
-    cursor: pointer;
-    font-family: 'Sen';
-}
-
-.signup-button:hover {
-    background: #fcd2b3;
-}
-.sbms_logo {
-    width: 500px;
-    height: 500px;
-    margin-top: 10%;
-    margin-bottom: 20px;
-    position: absolute;
-    left: 20%;
-}
-
-.remember-forgot {
+.navigation-div {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: 10px;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
 }
 
-.remember-label {
+.nav-logo {
+    width: 90px;
+    height: 90px;
+    margin-left: 20px;
+}
+
+ul {
+    list-style: none;
     display: flex;
-    align-items: center;
-    font-size: 10px;
-    color: #FFFFFF;
-    cursor: pointer;
+    gap: 25px;
 }
 
-.remember-checkbox {
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.forgot-password {
-    font-size: 10px;
-    font-weight: 700;
-    color: #FFFFFF;
-    text-decoration: none;
-    position: absolute;
-    left: 70%;
-    margin-top: 10px;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.signup-text {
-    font-size: 20px;
-    color: #FFFFFF;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.signup-link {
-    font-weight: bold;
-    color: #FDE6D4;
+li a {
+    color: #ffffff;
+    font-size: 15px;
     text-decoration: none;
 }
 
-.signup-link:hover {
-    text-decoration: underline;
-}
-
-.divider-line {
+.nav-button {
+    background-color: #FDE6D4;
+    border-radius: 10px;
     width: 150px;
-    height: 1px;
-    background: #FFFFFF;
-    border: none;
-}
-
-.divider-text {
-    margin: 0 10px;
-    font-size: 12px;
-    color: #FFFFFF;
+    height: 50px;
+    padding: 10px;
+    font-family: 'Sen', sans-serif;
     font-weight: bold;
+    font-size: 16px;
 }
 
-.google-button {
-    font-size: 12px;
+.background-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 32px;
+    left: 3.4%;
+    width: 90%;
+    height: 1000px;
+    top: 181px;
+    background: #222222;
+    border-radius: 25px;
+}
+
+.previous-button{
+    width: 150px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    position: absolute;
+    left: 3%;
+    top: 40px;
+    border-radius: 50px;
+    width: 130px;
+    font-style: italic;
+}
+
+.employee-container {
+    position: absolute;
     width: 200px;
-    height: 45px;
+    height: 150px;
+    top: -60px;
+    background-color: #E5E6F1;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-    cursor: pointer;
+    left: 44%;
+    border-radius: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    top: -20px;
+    background-color: #E5E6F1;
+    border-radius: 20px;
+}
+
+.parts-logo {
     position: absolute;
-    left: 30%;
-    margin-top: 30px;
-    border-radius: 10px;
-    border: none;
-    background: #F0F5FA;
-    
+    width: 100px;
+    height: 100px;
+}
+.Chicken-logo-container {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    top: 18%;
+    background-color: #E5E6F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 20%;
+    border-radius: 20px;
 }
 
-.google-button:hover {
-    background: #f5f5f5;
+.Head-logo-container {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    top: 18%;
+    background-color: #E5E6F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 36%;
+    border-radius: 20px;
 }
 
-.google-icon {
-    width: 25px;
-    height: 25px;
+.Feet-logo-container {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    top: 18%;
+    background-color: #E5E6F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 52%;
+    border-radius: 20px;
+}
+.Liver-logo-container {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    top: 18%;
+    background-color: #E5E6F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 67.5%;
+    border-radius: 20px;
+}
+.ChickenBlood-logo-container {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    top: 45%;
+    background-color: #E5E6F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 28%;
+    border-radius: 20px;
+}
+.Intestine-logo-container {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    top: 45%;
+    background-color: #E5E6F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 44%;
+    border-radius: 20px;
+}
+.Gizzard-logo-container {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    top: 45%;
+    background-color: #E5E6F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 60%;
+    border-radius: 20px;
 }

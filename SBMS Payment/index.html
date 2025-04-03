@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navigation-top">
+        <div class="navigation-div">
+            <img src="https://i.ibb.co/60c2V5M5/485022833-1021832163206590-2049955099638617889-n.png" class="nav-logo" alt="Logo">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-button">Sign Out</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="previous-button">Previous</button>
+        <h1 class="section-title">Payment Table</h1>
+
+        <div class="table-container">
+            
+            <div class="table-header">
+                <div>Payer Name</div>
+                <div>Amount</div>
+                <div>Date</div>
+                <div>Payment Method</div>
+            </div>
+            <div class="table-body" id="paymentTable"></div>
+        </div>
+
+        <div class="buttons">
+            <button class="add-button" onclick="addRow()">Add Payment</button>
+            <button class="calculate-button" onclick="calculateTotal()">Calculate Total</button>
+        </div>
+
+        <div class="total-container" id="totalAmount">Total: P 0.00</div>
+    </div>
+
+    <script>
+        function addRow() {
+            const tableBody = document.getElementById('paymentTable');
+            const row = document.createElement('div');
+            row.classList.add('table-row');
+            row.innerHTML = `
+                <div><input type="text" placeholder="Payer Name"></div>
+                <div><input type="number" placeholder="Amount"></div>
+                <div><input type="date"></div>
+                <div><input type="text" placeholder="Payment Method"></div>
+            `;
+            tableBody.appendChild(row);
+        }
+
+        function calculateTotal() {
+            const rows = document.querySelectorAll('.table-row');
+            let total = 0;
+            rows.forEach(row => {
+                const amount = row.querySelectorAll('input')[1].value;
+                total += parseFloat(amount) || 0;
+            });
+            document.getElementById('totalAmount').innerText = 'Total: P ' + total.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

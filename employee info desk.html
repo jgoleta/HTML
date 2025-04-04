@@ -5,347 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Information Sheet</title>
     <style>
-      /* Reset and base styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
-        font-family:
-          "Inter",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        line-height: 1.5;
-        color: #fff;
-      }
-
-      /* Main section styles */
-      .employee-form-section {
-        background-color: rgba(34, 34, 34, 1);
-        display: flex;
-        width: 90%;
-        padding: 120px 80px;
-        flex-direction: column;
         overflow: hidden;
-      }
-
-      @media (max-width: 991px) {
-        .employee-form-section {
-          max-width: 100%;
-          padding: 100px 20px;
-        }
-      }
-
-      /* Header section with title and search */
-      .header-container {
-        align-self: center;
-        display: flex;
+        margin: 0px;
         width: 100%;
-        max-width: 1256px;
-        align-items: stretch;
-        gap: 40px 100px;
-        flex-wrap: wrap;
+        height: 100%;
+        background: #ffffff;
       }
 
-      @media (max-width: 991px) {
-        .header-container {
-          max-width: 100%;
-        }
+      .navigation-top {
+        text-decoration: none;
+        background: #222222;
+        font-family: 'Sen', sans-serif;
+        padding-right: 15px;
+        padding-left: 15px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
       }
 
-      .form-title {
-        color: rgba(222, 242, 241, 1);
-        font-size: 60px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-weight: 600;
-        line-height: 1;
-        letter-spacing: -0.48px;
-        flex-grow: 1;
-        flex-shrink: 1;
-        width: 683px;
-      }
-
-      @media (max-width: 991px) {
-        .form-title {
-          max-width: 100%;
-          font-size: 40px;
-        }
-      }
-
-      .employee-search {
-        border-radius: 9999px;
-        background-color: rgba(255, 255, 255, 1);
-        border: 1px solid rgba(217, 217, 217, 1);
-        align-self: start;
+      .navigation-div {
         display: flex;
-        min-height: 56px;
-        padding: 20px 16px;
         align-items: center;
-        gap: 8px;
-        overflow: hidden;
-        font-family:
-          "Inter",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-size: 16px;
-        color: #1e1e1e;
-        font-weight: 400;
-        line-height: 1;
-        justify-content: start;
+        justify-content: space-between;
+        font-family: 'Sen', sans-serif;
+        font-weight: bold;
       }
 
-      .search-placeholder {
-        opacity: 0.5;
-        align-self: stretch;
-        margin-top: auto;
-        margin-bottom: auto;
-        flex: 1;
-        flex-shrink: 1;
-        flex-basis: 0%;
+      .nav-logo {
+        width: 90px;
+        height: 90px;
+        margin-left: 20px;
       }
 
-      .search-icon {
-        aspect-ratio: 1;
-        object-fit: contain;
-        object-position: center;
-        width: 16px;
-        align-self: stretch;
-        margin-top: auto;
-        margin-bottom: auto;
-        flex-shrink: 0;
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
       }
 
-      /* Form field styles */
-      .form-field {
+      li a {
+        color: #ffffff;
+        font-size: 15px;
+        text-decoration: none;
+      }
+
+      .nav-button {
+        background-color: #FDE6D4;
         border-radius: 10px;
+        width: 150px;
+        height: 50px;
+        padding: 10px;
+        font-family: 'Sen', sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .background-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        padding: 16px 32px;
+        left: 3.4%;
+        width: 90%;
+        height: 1000px;
+        top: 181px;
+        background: #222222;
+        border-radius: 25px;
+      }
+      .form-field {
+        border-radius: 5px;
         background-color: rgba(244, 244, 244, 1);
         border: 1px solid rgba(0, 0, 0, 1);
-        align-self: center;
         display: flex;
-        width: 1257px;
-        flex-shrink: 0;
-        max-width: 100%;
-        height: 79px;
+        margin-bottom: 10px;
+        padding: 5px;
       }
 
-      .name-fields-container {
-        display: flex;
-        margin-top: 9px;
-        margin-left: 17px;
-        width: 952px;
-        max-width: 100%;
-        align-items: stretch;
-        gap: 20px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-size: 20px;
-        color: rgba(255, 255, 255, 1);
-        font-weight: 600;
-        letter-spacing: -0.48px;
-        line-height: 3;
-        justify-content: space-between;
-      }
-
-      .contact-fields-container {
-        display: flex;
-        margin-top: 4px;
-        margin-left: 16px;
-        width: 536px;
-        max-width: 100%;
-        align-items: stretch;
-        gap: 20px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-size: 20px;
-        color: rgba(255, 255, 255, 1);
-        font-weight: 600;
-        letter-spacing: -0.48px;
-        line-height: 3;
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-
-      .address-label {
-        color: rgba(255, 255, 255, 1);
-        font-size: 20px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-weight: 600;
-        line-height: 3;
-        letter-spacing: -0.48px;
-        align-self: start;
-        margin-top: 7px;
-        margin-left: 16px;
-      }
-
-      @media (max-width: 991px) {
-        .address-label {
-          margin-left: 10px;
-        }
-      }
-
+      .name-fields-container,
+      .contact-fields-container,
       .location-fields-container {
         display: flex;
-        margin-top: 5px;
-        margin-left: 17px;
-        width: 690px;
-        max-width: 100%;
-        align-items: stretch;
-        gap: 20px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-size: 20px;
-        color: rgba(255, 255, 255, 1);
-        font-weight: 600;
-        letter-spacing: -0.48px;
-        line-height: 3;
+        gap: 10px;
         flex-wrap: wrap;
-        justify-content: space-between;
-      }
-
-      .emergency-section-title {
+        margin-top: 5px;
+        font-size: 14px;
         color: rgba(255, 255, 255, 1);
-        font-size: 25px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-weight: 800;
-        line-height: 2.3;
-        letter-spacing: -0.48px;
-        align-self: start;
-        margin-top: 37px;
       }
 
-      @media (max-width: 991px) {
-        .emergency-section-title {
-          margin-left: 9px;
-        }
+      .address-label,
+      .emergency-section-title {
+        font-size: 16px;
+        margin-top: 10px;
       }
 
       .divider {
-        aspect-ratio: 15.87;
-        object-fit: contain;
-        object-position: center;
-        width: 1260px;
-        border-radius: 10px;
-        align-self: center;
-        margin-top: 21px;
-        max-width: 1260px;
-      }
-
-      @media (max-width: 991px) {
-        .divider {
-          max-width: 100%;
-        }
+        width: 100%;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 20px 0;
       }
 
       .emergency-contacts-container {
         display: flex;
-        margin-top: 10px;
-        margin-left: 17px;
-        width: 854px;
-        max-width: 100%;
-        align-items: stretch;
-        gap: 40px 100px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        letter-spacing: -0.48px;
-        line-height: 3;
         flex-wrap: wrap;
+        gap: 20px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 1);
       }
 
       .contact-group {
         flex: 1;
       }
 
-      .contact-label-hidden {
-        color: rgba(0, 0, 0, 1);
-        /* Visually hidden but available to screen readers */
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      .contact-label {
-        color: rgba(255, 255, 255, 1);
-        z-index: 10;
-        margin-top: -15px;
-      }
-
-      .contact-label-alt {
-        color: rgba(255, 255, 255, 1);
-      }
-
       .emergency-phone-container {
         display: flex;
-        margin-top: 5px;
-        margin-left: 16px;
-        margin-bottom: -21px;
-        width: 775px;
-        max-width: 100%;
-        align-items: stretch;
         gap: 20px;
-        font-family:
-          "Bricolage Grotesque",
-          -apple-system,
-          Roboto,
-          Helvetica,
-          sans-serif;
-        font-size: 20px;
-        color: rgba(255, 255, 255, 1);
-        font-weight: 600;
-        letter-spacing: -0.48px;
-        line-height: 3;
         flex-wrap: wrap;
-        justify-content: space-between;
-      }
-
-      @media (max-width: 991px) {
-        .emergency-phone-container {
-          margin-bottom: 10px;
-        }
       }
 
       /* Focus styles for accessibility */
@@ -369,149 +144,149 @@
     </style>
   </head>
   <body>
+    <nav class="navigation-top">
+      <div class="navigation-div">
+        <img src="https://i.ibb.co/60c2V5M5/485022833-1021832163206590-2049955099638617889-n.png" class="nav-logo" alt="Logo">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-button">Sign Out</button>
+      </div>
+    </nav>
     <main>
-      <section class="employee-form-section" aria-labelledby="form-title">
-        <header class="header-container">
-          <h1 id="form-title" class="form-title">Employee Information Sheet</h1>
-          <div
-            class="employee-search"
-            role="combobox"
-            aria-expanded="false"
-            aria-owns="employee-list"
-            aria-haspopup="listbox"
-          >
-            <span class="search-placeholder">Select Employee:</span>
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/53a8e04250f8564eebf69a85bb0294a435835e86?placeholderIfAbsent=true&apiKey=7570aeabd8454f1c87aad0d6ebffa592"
-              alt="Search icon"
-              class="search-icon"
-            />
-          </div>
-        </header>
-
-        <form aria-label="Employee information form">
-          <!-- Name fields section -->
-          <div class="form-field" aria-hidden="true"></div>
-          <div class="name-fields-container">
-            <label for="first-name">First Name</label>
-            <label for="middle-name">Middle Name</label>
-            <label for="last-name">Last Name</label>
-          </div>
-          <div class="form-field">
-            <span class="sr-only">Name input fields</span>
-            <input
-              type="text"
-              id="first-name"
-              name="first-name"
-              class="sr-only"
-            />
-            <input
-              type="text"
-              id="middle-name"
-              name="middle-name"
-              class="sr-only"
-            />
-            <input
-              type="text"
-              id="last-name"
-              name="last-name"
-              class="sr-only"
-            />
-          </div>
-
-          <!-- Contact fields section -->
-          <div class="contact-fields-container">
-            <label for="email">E-mail</label>
-            <label for="phone">Phone No.</label>
-          </div>
-          <div class="form-field">
-            <span class="sr-only">Contact information fields</span>
-            <input type="email" id="email" name="email" class="sr-only" />
-            <input type="tel" id="phone" name="phone" class="sr-only" />
-          </div>
-
-          <!-- Address section -->
-          <label for="address" class="address-label">Permanent Address</label>
-          <div class="form-field">
-            <span class="sr-only">Address input field</span>
-            <input type="text" id="address" name="address" class="sr-only" />
-          </div>
-
-          <!-- Location fields section -->
-          <div class="location-fields-container">
-            <label for="city">City/Municipality</label>
-            <label for="zip">Zip Code</label>
-          </div>
-          <div class="form-field">
-            <span class="sr-only">Location fields</span>
-            <input type="text" id="city" name="city" class="sr-only" />
-            <input type="text" id="zip" name="zip" class="sr-only" />
-          </div>
-
-          <!-- Emergency contacts section -->
-          <h2 class="emergency-section-title">Emergency Contacts</h2>
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/10606f6bafd58de21fffc82f4d4df1ac216df3ba?placeholderIfAbsent=true&apiKey=7570aeabd8454f1c87aad0d6ebffa592"
-            alt=""
-            class="divider"
-            aria-hidden="true"
-          />
-
-          <div class="emergency-contacts-container">
-            <div class="contact-group">
-              <span class="contact-label-hidden">Name and Relation</span>
-              <label for="emergency-contact-1" class="contact-label"
+        <section class="background-container" aria-labelledby="form-title">
+          <header class="header-container">
+            <h1 id="form-title" class="form-title">Employee Information Sheet</h1>
+            <div
+              class="employee-search"
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="employee-list"
+              aria-haspopup="listbox"
+            >
+              <span class="search-placeholder">Select Employee:</span>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/53a8e04250f8564eebf69a85bb0294a435835e86?placeholderIfAbsent=true&apiKey=7570aeabd8454f1c87aad0d6ebffa592"
+                alt="Search icon"
+                class="search-icon"
+              />
+            </div>
+          </header>
+  
+          <form aria-label="Employee information form">
+            <!-- Name fields section -->
+            <div class="form-field" aria-hidden="true"></div>
+            <div class="name-fields-container">
+              <label for="first-name">First Name</label>
+              <label for="middle-name">Middle Name</label>
+              <label for="last-name">Last Name</label>
+            </div>
+            <div class="form-field">
+              <span class="sr-only">Name input fields</span>
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                class="sr-only"
+              />
+              <input
+                type="text"
+                id="middle-name"
+                name="middle-name"
+                class="sr-only"
+              />
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                class="sr-only"
+              />
+            </div>
+  
+            <!-- Contact fields section -->
+            <div class="contact-fields-container">
+              <label for="email">E-mail</label>
+              <label for="phone">Phone No.</label>
+            </div>
+            <div class="form-field">
+              <span class="sr-only">Contact information fields</span>
+              <input type="email" id="email" name="email" class="sr-only" />
+              <input type="tel" id="phone" name="phone" class="sr-only" />
+            </div>
+  
+            <!-- Address section -->
+            <label for="address" class="address-label">Permanent Address</label>
+            <div class="form-field">
+              <span class="sr-only">Address input field</span>
+              <input type="text" id="address" name="address" class="sr-only" />
+            </div>
+  
+            <!-- Location fields section -->
+            <div class="location-fields-container">
+              <label for="city">City/Municipality</label>
+              <label for="zip">Zip Code</label>
+            </div>
+            <div class="form-field">
+              <span class="sr-only">Location fields</span>
+              <input type="text" id="city" name="city" class="sr-only" />
+              <input type="text" id="zip" name="zip" class="sr-only" />
+            </div>
+  
+            <!-- Emergency contacts section -->
+            <h2 class="emergency-section-title">Emergency Contacts</h2>
+            <div class="divider" aria-hidden="true"></div>
+  
+            <div class="emergency-contacts-container">
+              <div class="contact-group">
+                <label for="emergency-contact-1" class="contact-label"
+                  >Name and Relation</label
+                >
+              </div>
+              <label for="emergency-contact-2" class="contact-label-alt"
                 >Name and Relation</label
               >
             </div>
-            <label for="emergency-contact-2" class="contact-label-alt"
-              >Name and Relation</label
-            >
-          </div>
-          <div class="form-field">
-            <span class="sr-only">Emergency contact name fields</span>
-            <input
-              type="text"
-              id="emergency-contact-1"
-              name="emergency-contact-1"
-              class="sr-only"
-            />
-            <input
-              type="text"
-              id="emergency-contact-2"
-              name="emergency-contact-2"
-              class="sr-only"
-            />
-          </div>
-
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/10606f6bafd58de21fffc82f4d4df1ac216df3ba?placeholderIfAbsent=true&apiKey=7570aeabd8454f1c87aad0d6ebffa592"
-            alt=""
-            class="divider"
-            aria-hidden="true"
-          />
-
-          <div class="emergency-phone-container">
-            <label for="emergency-phone-1">Phone No.</label>
-            <label for="emergency-phone-2">Phone No.</label>
-          </div>
-          <div class="form-field">
-            <span class="sr-only">Emergency contact phone fields</span>
-            <input
-              type="tel"
-              id="emergency-phone-1"
-              name="emergency-phone-1"
-              class="sr-only"
-            />
-            <input
-              type="tel"
-              id="emergency-phone-2"
-              name="emergency-phone-2"
-              class="sr-only"
-            />
-          </div>
-        </form>
-      </section>
-    </main>
+            <div class="form-field">
+              <span class="sr-only">Emergency contact name fields</span>
+              <input
+                type="text"
+                id="emergency-contact-1"
+                name="emergency-contact-1"
+                class="sr-only"
+              />
+              <input
+                type="text"
+                id="emergency-contact-2"
+                name="emergency-contact-2"
+                class="sr-only"
+              />
+            </div>
+  
+            <div class="divider" aria-hidden="true"></div>
+  
+            <div class="emergency-phone-container">
+              <label for="emergency-phone-1">Phone No.</label>
+              <label for="emergency-phone-2">Phone No.</label>
+            </div>
+            <div class="form-field">
+              <span class="sr-only">Emergency contact phone fields</span>
+              <input
+                type="tel"
+                id="emergency-phone-1"
+                name="emergency-phone-1"
+                class="sr-only"
+              />
+              <input
+                type="tel"
+                id="emergency-phone-2"
+                name="emergency-phone-2"
+                class="sr-only"
+              />
+            </div>
+          </form>
+        </section>
+      </main>
   </body>
 </html>

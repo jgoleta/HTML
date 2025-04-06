@@ -40,7 +40,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 40px;
+        padding-right: 15px;
+        padding-left: 15px;
         border: 1px solid #0d0c10;
         border-radius: 25px;
         background-color: #222;
@@ -55,8 +56,9 @@
       }
 
       .logo {
-        width: 127px;
-        height: 127px;
+        width: 90px;
+        height: 90px;
+        margin-left: 20px;
       }
 
       .nav-links {
@@ -307,6 +309,7 @@
         }
       }
       
+      
     </style>
   </head>
   <body>
@@ -320,15 +323,16 @@
     </header>
 
     <main class="main-content">
-      <section class="page-navigation">
-        <div class="nav-controls">
-          <button type="button" class="prev-btn">&lt; previous</button>
-          <h1 class="page-title">Employee Information Sheet</h1>
-          <button type="button" class="done-btn">Done</button>
-        </div>
-      </section>
+      
 
       <form class="form-container">
+        <section class="page-navigation">
+          <div class="nav-controls">
+            <button type="button" class="prev-btn">&lt; previous</button>
+            <h1 class="page-title">Employee Information Sheet</h1>
+            <button type="button" class="done-btn">Done</button>
+          </div>
+        </section>
         <section class="name-fields">
           <div class="form-group">
             <label for="firstName" class="form-label">First Name</label>

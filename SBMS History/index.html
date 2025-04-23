@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Sen:wght@400;700&family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page-container">
+      <nav class="navigation-top">
+        <div class="navigation-div">
+          <img
+            src="https://i.ibb.co/60c2V5M5/485022833-1021832163206590-2049955099638617889-n.png"
+            class="nav-logo"
+            alt="Logo"
+          />
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <button class="nav-button">Sign Out</button>
+        </div>
+      </nav>
+
+      <main class="main-content">
+        <div class="navigation-controls">
+          <button class="prev-button">&lt; Previous</button>
+          <div class="action-buttons">
+            <button class="add-button" onclick="toggleForm()">Add</button>
+          </div>
+        </div>
+
+        <form class="add-form" id="addForm">
+          <input type="text" placeholder="Order ID" id="orderId" required />
+          <input type="text" placeholder="Item Name" id="itemName" required />
+          <input type="date" id="orderDate" required />
+          <input type="number" placeholder="Qty" id="quantity" required />
+          <input type="text" placeholder="Sold by" id="soldBy" required />
+          <input type="text" placeholder="Sold to" id="soldTo" required />
+          <button type="submit">Submit</button>
+        </form>
+
+        <section class="order-history-section">
+          <div class="search-container">
+            <div class="search-input">
+              <input type="text" id="search" placeholder="Enter Order ID" />
+              <button class="clear-search" aria-label="Clear search">
+                <svg width="16" height="17" viewBox="0 0 16 17" fill="none">
+                  <path d="M12 4.5L4 12.5M4 4.5L12 12.5" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <div class="table-header">
+              <div class="header-cell">Order ID</div>
+              <div class="header-cell">Item Name</div>
+              <div class="header-cell">Date</div>
+              <div class="header-cell">Qty</div>
+              <div class="header-cell">Sold by</div>
+              <div class="header-cell">Sold to</div>
+              <div class="header-cell">Action</div>
+            </div>
+
+            <div class="table-body" id="tableBody"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function toggleForm() {
+        const form = document.getElementById('addForm');
+        form.style.display = form.style.display === 'none' || form.style.display === '' ? 'flex' : 'none';
+      }
+
+      document.getElementById('addForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const orderId = document.getElementById('orderId').value;
+        const itemName = document.getElementById('itemName').value;
+        const orderDate = document.getElementById('orderDate').value;
+        const quantity = document.getElementById('quantity').value;
+        const soldBy = document.getElementById('soldBy').value;
+        const soldTo = document.getElementById('soldTo').value;
+
+        const row = document.createElement('div');
+        row.className = 'table-row';
+        row.setAttribute('data-order-id', orderId);
+        row.innerHTML = `
+          <div data-label="Order ID">${orderId}</div>
+          <div data-label="Item Name">${itemName}</div>
+          <div data-label="Date">${orderDate}</div>
+          <div data-label="Qty">${quantity}</div>
+          <div data-label="Sold by">${soldBy}</div>
+          <div data-label="Sold to">${soldTo}</div>
+          <div data-label="Action"><button class="delete-btn" aria-label="Delete order">Delete</button></div>
+        `;
+
+        row.querySelector('.delete-btn').addEventListener('click', () => {
+          row.remove();
+        });
+
+        document.getElementById('tableBody').appendChild(row);
+        document.getElementById('addForm').reset();
+        document.getElementById('addForm').style.display = 'none';
+      });
+
+      const searchInput = document.getElementById('search');
+      searchInput.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+        const rows = document.querySelectorAll('#tableBody .table-row');
+
+        rows.forEach((row) => {
+          const orderId = row.getAttribute('data-order-id').toLowerCase();
+          row.style.display = orderId.includes(query) ? '' : 'none';
+        });
+      });
+
+      document.querySelector('.clear-search').addEventListener('click', function () {
+        searchInput.value = '';
+        const rows = document.querySelectorAll('#tableBody .table-row');
+        rows.forEach((row) => {
+          row.style.display = '';
+        });
+      });
+    </script>
+  </body>
+</html>

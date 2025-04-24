@@ -1,59 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600&display=swap');
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Sen', sans-serif;
-  background: #ffffff;
-  overflow-x: hidden;
-}
-
-.navigation-top {
-  background: #222222;
-  padding: 0 15px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-.navigation-div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: bold;
-}
-
-.nav-logo {
-  width: 90px;
-  height: 90px;
-  margin-left: 20px;
-}
-
-ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-li a {
-  color: #ffffff;
-  font-size: 15px;
-  text-decoration: none;
-}
-
-.nav-button {
-  background-color: #fde6d4;
-  border-radius: 10px;
-  width: 150px;
-  height: 50px;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-}
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Sen', sans-serif;
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+  
+  .navigation-top {
+    text-decoration: none;
+    background: #222222;
+    font-family: 'Sen', sans-serif;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .navigation-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+  }
+  
+  .nav-logo {
+    width: 90px;
+    height: 90px;
+    margin-left: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  
+  li a {
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  
+  .nav-button {
+    background-color: #FDE6D4;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
 .main-content {
   padding: 0 32px;

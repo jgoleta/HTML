@@ -3,14 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Sales Report</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&family=Bricolage+Grotesque:wght@600;700&family=Inter&display=swap"
       rel="stylesheet"
     />
     <style>
-      /* Base Styles */
       * {
         margin: 0;
         padding: 0;
@@ -26,21 +24,16 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        background-color: #fff;
       }
 
-      /* Header Styles */
       .main-header {
         width: 100%;
         height: 180px;
         background-color: #222;
-        border-width: 1px;
-        border-color: #0d0c10;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-left: 32px;
-        padding-right: 32px;
+        padding: 0 32px;
       }
 
       .header-logo {
@@ -57,7 +50,6 @@
       .nav-link {
         color: #fff;
         font-size: 18px;
-        font-family: "Sen", sans-serif;
         font-weight: 700;
         text-transform: uppercase;
         text-decoration: none;
@@ -66,7 +58,6 @@
       .logout-button {
         color: #1f214d;
         font-size: 18px;
-        font-family: "Sen", sans-serif;
         font-weight: 700;
         text-transform: uppercase;
         background-color: #fde6d4;
@@ -76,7 +67,6 @@
         cursor: pointer;
       }
 
-      /* Logo Section Styles */
       .logo-section {
         display: flex;
         justify-content: center;
@@ -84,22 +74,16 @@
       }
 
       .logo-container {
-        display: flex;
         width: 225px;
         height: 179px;
         background-color: #e5e6f1;
         border-radius: 24px;
-        box-shadow: 0px 16px 56px -12px rgba(69, 65, 113, 0.16);
+        box-shadow: 0 16px 56px -12px rgba(69, 65, 113, 0.16);
+        display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      .brand-logo {
-        width: 105px;
-        height: 105px;
-      }
-
-      /* Main Content Styles */
       .main-content {
         padding: 0 32px;
         margin-top: 44px;
@@ -114,7 +98,6 @@
       .prev-button {
         color: #1f214d;
         font-size: 16px;
-        font-family: "Sen", sans-serif;
         font-weight: 700;
         text-transform: uppercase;
         background-color: #fff;
@@ -132,17 +115,15 @@
       .action-button {
         color: #1f214d;
         font-size: 16px;
-        font-family: "Sen", sans-serif;
         font-weight: 700;
         text-transform: uppercase;
         background-color: #fff;
         border-radius: 12px;
         padding: 8px 16px;
-        border: none;
+        border: 1px solid #ccc;
         cursor: pointer;
       }
 
-      /* Product Section Styles */
       .product-section {
         margin-top: 32px;
         background-color: #fff;
@@ -158,42 +139,20 @@
         margin-bottom: 24px;
       }
 
-      .search-container {
+      .add-product-form {
         display: flex;
-        align-items: center;
         gap: 12px;
         margin-bottom: 24px;
+        flex-wrap: wrap;
       }
 
-      .search-input {
-        display: flex;
-        width: 293px;
-        height: 31px;
-        align-items: center;
-        gap: 8px;
-        border-radius: 9999px;
-        border: 1px solid #e5e7eb;
-        background-color: #fff;
-        padding: 0 16px;
+      .add-product-form input {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
       }
 
-      .search-label {
-        color: #1e1e1e;
-        opacity: 0.5;
-        font-family: "Inter", sans-serif;
-        font-size: 16px;
-      }
-
-      .clear-search {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Table Styles */
       .table-container {
         width: 100%;
       }
@@ -202,7 +161,7 @@
         background-color: #222;
         color: #fff;
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr)); /* Changed from 5 columns to 4 */
+        grid-template-columns: repeat(4, 1fr);
         gap: 1px;
         padding: 12px 0;
         border-radius: 4px;
@@ -221,25 +180,27 @@
 
       .table-row {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr)); /* Changed from 5 columns to 4 */
+        grid-template-columns: repeat(4, 1fr);
         gap: 1px;
         padding: 16px 0;
         border-bottom: 1px solid #000;
+        text-align: center;
       }
 
       .table-row.alternate {
         background-color: rgba(34, 34, 34, 0.1);
       }
 
-      .table-row:last-child {
-        border-bottom: none;
-      }
-
-      /* Accessibility Enhancements */
-      button:focus,
-      a:focus {
-        outline: 2px solid #1f214d;
-        outline-offset: 2px;
+      .delete-button {
+        background: #fde6d4;
+        border: none;
+        padding: 6px 12px;
+        margin: 8px auto;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        grid-column: span 4;
+        width: max-content;
       }
 
       .title-divider {
@@ -264,7 +225,7 @@
 
         .table-header,
         .table-row {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(3, 1fr);
         }
 
         .header-cell:nth-child(n + 4),
@@ -298,7 +259,7 @@
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/5525e84fb5cd1a7c59c27e8d0fbf661dd624d417"
             alt="Product Management"
-            class="w-[122px] h-[122px]"
+            style="width: 105px; height: 105px"
           />
         </div>
       </section>
@@ -307,37 +268,20 @@
         <div class="navigation-controls">
           <button class="prev-button">&lt; previous</button>
           <div class="action-buttons">
-            <button class="action-button">Add</button>
-            <button class="action-button">Delete</button>
+            <!-- Buttons remain -->
           </div>
         </div>
 
         <section class="product-section">
           <h1 class="section-title">Sales Report</h1>
+          <hr class="title-divider" />
 
-          <hr class="title-divider">
-
-          <div class="search-container">
-            <div class="search-input">
-              <label for="search" class="search-label">Search Product ID:</label>
-              <button class="clear-search" aria-label="Clear search">
-                <svg
-                  width="16"
-                  height="17"
-                  viewBox="0 0 16 17"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4.5L4 12.5M4 4.5L12 12.5"
-                    stroke="#1E1E1E"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </svg>
-              </button>
-            </div>
+          <!-- Form to add product -->
+          <div class="add-product-form">
+            <input type="text" id="productName" placeholder="Product Name" />
+            <input type="number" id="quantitySold" placeholder="Quantity" />
+            <input type="number" id="price" placeholder="Price" />
+            <button onclick="addProduct()" class="action-button">Add</button>
           </div>
 
           <div class="table-container">
@@ -349,18 +293,52 @@
             </div>
 
             <div class="table-body">
-              <div class="table-row"></div>
-              <div class="table-row alternate"></div>
-              <div class="table-row"></div>
-              <div class="table-row alternate"></div>
-              <div class="table-row"></div>
-              <div class="table-row alternate"></div>
-              <div class="table-row"></div>
-              <div class="table-row alternate"></div>
+              <!-- Rows will be added here -->
             </div>
           </div>
         </section>
       </main>
     </div>
+
+    <script>
+      const tableBody = document.querySelector(".table-body");
+
+      function addProduct() {
+        const name = document.getElementById("productName").value;
+        const qty = parseInt(document.getElementById("quantitySold").value);
+        const price = parseFloat(document.getElementById("price").value);
+
+        if (!name || isNaN(qty) || isNaN(price)) {
+          alert("Please enter all fields.");
+          return;
+        }
+
+        const total = qty * price;
+        const row = document.createElement("div");
+        row.className = `table-row ${tableBody.children.length % 2 !== 0 ? "alternate" : ""}`;
+        row.innerHTML = `
+          <div>${name}</div>
+          <div>${qty}</div>
+          <div>₱${price.toFixed(2)}</div>
+          <div>₱${total.toFixed(2)}</div>
+        `;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.className = "delete-button";
+        deleteBtn.onclick = () => {
+          row.remove();
+          deleteBtn.remove();
+        };
+
+        tableBody.appendChild(row);
+        tableBody.appendChild(deleteBtn);
+
+        // Reset input fields
+        document.getElementById("productName").value = "";
+        document.getElementById("quantitySold").value = "";
+        document.getElementById("price").value = "";
+      }
+    </script>
   </body>
 </html>

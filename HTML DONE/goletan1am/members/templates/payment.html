@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Sen', sans-serif;
+    background: #ffffff;
+    overflow-x: hidden;
+    opacity: 0; 
+      transform: translateY(50px);
+      animation: slideUp 1.2s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+  
+  .navigation-top {
+    text-decoration: none;
+    background: #222222;
+    font-family: 'Sen', sans-serif;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .navigation-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+  }
+  
+  .nav-logo {
+    width: 90px;
+    height: 90px;
+    margin-left: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  
+  li a {
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  
+  .nav-button {
+    background-color: #FDE6D4;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.previous-button {
+    position: absolute;
+    left: 27.5%;
+    top: 16 .5%;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    font-family: 'Sen';
+    font-weight: bold;
+    font-size: 16px;
+    font-style: italic;
+    border-radius: 50px;
+    border-color: black;
+    color: #000000;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+.previous-button:hover {
+    background-color: #222222;
+    color: #ffffff;
+}
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.submitted-payments .table-header,
+.submitted-payments .table-row {
+    text-align: center;
+}
+
+.table-container {
+    width: 100%;
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-row div, .table-header div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: #222222;
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+}
+.table-row select {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Sen', sans-serif;
+}
+.table-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-row input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.submit-button {
+    background: #222222;
+    color: white;
+    padding: 10px 15px;
+    border: none;   
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background: #626a72;
+}
+
+.total-container {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.submitted-payments {
+    margin-top: 40px;
+}
+
+.submitted-payments h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .table-header, .table-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .table-header div:nth-child(4),
+    .table-row div:nth-child(4) {
+        display: none;
+    }
+}
+</style>
+</head>
+<body>
+
+    <nav class="navigation-top">
+        <div class="navigation-div">
+            <img src="https://i.ibb.co/60c2V5M5/485022833-1021832163206590-2049955099638617889-n.png" class="nav-logo" alt="Logo">
+            <ul>
+                <li><a href="{% url 'webpage3' %}">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="{% url 'webpage1' %}"><button type="submit" class="nav-button">Sign Out</button></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="{% url 'webpage3' %}"><button class="previous-button">Previous</button></a>
+        <h1 class="section-title">Payment Table</h1>
+
+        <div class="table-container">
+            <div class="table-header">
+                <div>Payer Name</div>
+                <div>Amount</div>
+                <div>Date</div>
+                <div>Payment Method</div>
+            </div>
+            <div class="table-body">
+                <div class="table-row" id="paymentInputRow">
+                    <div><input type="text" id="payerName" placeholder="Payer Name"></div>
+                    <div><input type="number" id="amount" placeholder="Amount"></div>
+                    <div><input type="date" id="date"></div>
+                    <div>
+                        <select id="paymentMethod">
+                            <option value="" disabled selected>Select Method</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="Cash">Cash</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="submit-button" onclick="submitPayment()">Submit</button>
+        </div>
+
+        <div class="submitted-payments">
+            <div class="table-header">
+                <div>Payer Name</div>
+                <div>Amount</div>
+                <div>Date</div>
+                <div>Payment Method</div>
+            </div>
+            <div class="table-body" id="submittedTable"></div>
+        </div>
+    </div>
+
+    <script>
+        function submitPayment() {
+            const name = document.getElementById('payerName').value;
+            const amount = document.getElementById('amount').value;
+            const date = document.getElementById('date').value;
+            const method = document.getElementById('paymentMethod').value;
+
+            if (!name || !amount || !date || !method) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            const submittedTable = document.getElementById('submittedTable');
+            const newRow = document.createElement('div');
+            newRow.classList.add('table-row');
+            newRow.innerHTML = `
+                <div>${name}</div>
+                <div>${amount}</div>
+                <div>${date}</div>
+                <div>${method}</div>
+            `;
+            submittedTable.appendChild(newRow);
+
+            document.getElementById('payerName').value = '';
+            document.getElementById('amount').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('paymentMethod').value = '';
+        }
+    </script>
+
+</body>
+</html>

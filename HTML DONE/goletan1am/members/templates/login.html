@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBMS Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      font-family: 'Sen', sans-serif;
+    }
+
+    .page-design {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      top: 25%;
+      left: -4.2%;
+    }
+
+    .sbms_logo {
+      width: 500px;
+      height: 500px;
+      margin-top: 10%;
+      margin-bottom: 20px;
+      position: absolute;
+      left: 20%;
+    }
+
+    .login-container {
+      position: absolute;
+      width: 500px;
+      height: 700px;
+      left: 65%;
+      top: 10%;
+      background-color: #222222;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .login-header {
+      color: #FFFFFF;
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 50px;
+    }
+
+    .input-box {
+      width: 380px;
+      height: 45px;
+      margin-top: 30px;
+      border-radius: 10px;
+      border: none;
+      background: #F0F5FA;
+      font-size: 12px;
+      padding-left: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 10px;
+      color: #EEEEEE;
+      margin-top: 10px;
+      text-transform: uppercase;
+      position: absolute;
+      left: 55px;
+    }
+
+    .login-button {
+      width: 395px;
+      height: 45px;
+      background: #FDE6D4;
+      color: #000000;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 10px;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+      font-family: 'Sen';
+    }
+
+    .signup-button:hover {
+      background: #fcd2b3;
+    }
+
+    .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 50px;
+  position: relative;
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.remember-checkbox {
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 10px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-top: 0; 
+  position: absolute;
+  right: 20px; 
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+    .signup-text {
+      font-size: 20px;
+      color: #FFFFFF;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .signup-link {
+      font-weight: bold;
+      color: #FDE6D4;
+      text-decoration: none;
+    }
+
+    .signup-link:hover {
+      text-decoration: underline;
+    }
+
+    .divider-line {
+      width: 150px;
+      height: 1px;
+      background: #FFFFFF;
+      border: none;
+      display: inline-block;
+    }
+
+    .divider-text {
+      margin: 0 10px;
+      font-size: 12px;
+      color: #FFFFFF;
+      font-weight: bold;
+    }
+
+    .google-button {
+      font-size: 12px;
+      width: 200px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      left: 30%;
+      margin-top: 30px;
+      border-radius: 10px;
+      border: none;
+      background: #F0F5FA;
+    }
+
+    .google-button:hover {
+      background: #f5f5f5;
+    }
+
+    .google-icon {
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.ibb.co/j9NGt9vM/page-background.png" class="page-design">
+  <img src="https://i.ibb.co/60c2V5M5/485022833-1021832163206590-2049955099638617889-n.png" class="sbms_logo">
+
+  <div class="login-container">
+    <h2 class="login-header">Welcome to SBMS!</h2>  
+
+    <label for="email">Email</label>
+    <input type="email" id="email" class="input-box" placeholder="Enter your email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" class="input-box" placeholder="Enter password">
+    
+    <div class="remember-forgot">
+      <label class="remember-label">
+        <input type="checkbox" id="remember-me" class="remember-checkbox">
+        Remember me
+      </label>
+      <a href="#" class="forgot-password">Forgot Password?</a>
+    </div>
+
+    <a href="{% url 'webpage3' %}">
+        <button class="login-button">Log In</button>
+    </a>
+
+    <p class="signup-text">Don't have an account? <a href="{% url 'webpage6' %}" class="signup-link">Sign up</a></p>
+
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+      <hr class="divider-line">
+      <span class="divider-text">or</span>
+      <hr class="divider-line">
+    </div>
+
+    <button class="google-button">
+      <img src="images/google-icon.png" alt="Google Logo" class="google-icon">
+      Sign in with Google
+    </button>
+  </div>
+</body>
+</html>

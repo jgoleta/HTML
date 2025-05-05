@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Sen', sans-serif;
+      background: #ffffff;
+    }
+    nav {
+      background: #222;
+      padding: 0 15px;
+    }
+    .navigation-div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      width: 90px;
+      height: 90px;
+      margin-left: 20px;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    li a {
+      color: #fff;
+      font-size: 15px;
+      text-decoration: none;
+    }
+    .nav-button {
+      background-color: #FDE6D4;
+      border-radius: 10px;
+      width: 150px;
+      height: 50px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+    .background-container {
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      width: 90%;
+      background: #222;
+      color: white;
+      margin: 60px auto;
+    }
+    .customer-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .previous-button {
+      border-radius: 50px;
+      font-style: italic;
+      padding: 0 20px;
+      height: 50px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .button-container {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .add-button, .delete-button {
+      width: 150px;
+      height: 50px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .customer-form-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      color: #000;
+      margin: 30px 0;
+      display: none;
+    }
+    .customer-form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    .customer-form input,
+    .customer-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .submit-button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .search-bar {
+      margin: 15px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-bar input,
+    .search-bar button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .search-button,
+    .reset-button {
+      background: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .customer-table-container {
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      color: #000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      max-height: 500px;
+      overflow: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 20px;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 24px;
+      border: 1px solid #ccc;
+      text-align: left;
+      word-wrap: break-word;
+    }
+    th {
+      background: #f2f2f2;
+      font-size: 22px;
+    }
+    tr.selected {
+      background: #dbeafe;
+      font-weight: bold;
+    }
+    tr:hover {
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="navigation-div">
+      <img src="https://i.ibb.co/60c2V5M5/485022833-1021832163206590-2049955099638617889-n.png" class="nav-logo" alt="Logo">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-button">Sign Out</button>
+    </div>
+  </nav>
+
+  <div class="background-container">
+    <div class="customer-header">
+      <button class="previous-button">Previous</button>
+      <div class="button-container">
+        <button class="add-button" onclick="toggleForm()">Add Order</button>
+        <button class="delete-button">Delete Order</button>
+      </div>
+    </div>
+
+    <div class="customer-form-container">
+      <form class="customer-form">
+        <label for="customer-id">Customer ID:</label>
+        <input type="text" id="customer-id" required>
+
+        <label for="employee-id">Employee ID:</label>
+        <input type="text" id="employee-id" required>
+
+        <label for="product-name">Product:</label>
+        <select id="product-name" required>
+          <option value="Whole Chicken">Whole Chicken</option>
+          <option value="Chicken Feet">Chicken Feet</option>
+          <option value="Chicken Head">Chicken Head</option>
+          <option value="Chicken Liver">Chicken Liver</option>
+          <option value="Chicken Intestine">Chicken Intestine</option>
+          <option value="Chicken Blood">Chicken Blood</option>
+          <option value="Chicken Gizzard">Chicken Gizzard</option>
+        </select>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" step="0.01" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="search-order-id" placeholder="Search by Order ID">
+      <input type="text" id="search-product" placeholder="Search by Product Name">
+      <input type="date" id="search-date">
+      <button class="search-button" onclick="filterTable()">Search</button>
+      <button class="reset-button" onclick="resetFilters()">Reset</button>
+    </div>
+
+    <div class="customer-table-container">
+      <table id="customer-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Employee ID</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      const productMap = {
+        "Whole Chicken": 1,
+        "Chicken Feet": 2,
+        "Chicken Head": 3,
+        "Chicken Liver": 4,
+        "Chicken Intestine": 5,
+        "Chicken Blood": 6,
+        "Chicken Gizzard": 7
+      };
+
+      const customerForm = document.querySelector('.customer-form');
+      const customerTableBody = document.querySelector('#customer-table tbody');
+      const deleteButton = document.querySelector('.delete-button');
+      const formContainer = document.querySelector('.customer-form-container');
+      const searchOrderId = document.getElementById('search-order-id');
+      const searchProduct = document.getElementById('search-product');
+      const searchDate = document.getElementById('search-date');
+
+      let orderData = [];
+      let orderIdCounter = 1;
+
+      function toggleForm() {
+        formContainer.style.display = formContainer.style.display === 'none' || formContainer.style.display === '' ? 'block' : 'none';
+      }
+
+      customerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const customerId = document.getElementById('customer-id').value;
+        const employeeId = document.getElementById('employee-id').value;
+        const productName = document.getElementById('product-name').value;
+        const amount = parseFloat(document.getElementById('amount').value).toFixed(2);
+        const date = document.getElementById('date').value;
+        const productId = productMap[productName];
+
+        const duplicate = orderData.some(order =>
+          order.customerId === customerId &&
+          order.productName === productName &&
+          order.date === date
+        );
+
+        if (duplicate) {
+          alert('This order already exists.');
+          return;
+        }
+
+        const newOrder = {
+          id: orderIdCounter++,
+          customerId,
+          employeeId,
+          productId,
+          productName,
+          amount,
+          date
+        };
+
+        orderData.push(newOrder);
+        renderTable(orderData);
+        customerForm.reset();
+        formContainer.style.display = 'none';
+      });
+
+      function renderTable(data) {
+        customerTableBody.innerHTML = '';
+        data.forEach((order, index) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${order.id}</td>
+            <td>${order.customerId}</td>
+            <td>${order.employeeId}</td>
+            <td>${order.productId}</td>
+            <td>${order.productName}</td>
+            <td>P${order.amount}</td>
+            <td>${order.date}</td>
+          `;
+          row.setAttribute('data-index', index);
+          row.addEventListener('click', () => {
+            document.querySelectorAll('tr').forEach(r => r.classList.remove('selected'));
+            row.classList.add('selected');
+          });
+          customerTableBody.appendChild(row);
+        });
+      }
+
+      function filterTable() {
+        const idQuery = searchOrderId.value.trim();
+        const productQuery = searchProduct.value.trim().toLowerCase();
+        const dateQuery = searchDate.value;
+
+        const filtered = orderData.filter(order => {
+          const matchId = !idQuery || order.id.toString().includes(idQuery);
+          const matchProduct = !productQuery || order.productName.toLowerCase().includes(productQuery);
+          const matchDate = !dateQuery || order.date === dateQuery;
+          return matchId && matchProduct && matchDate;
+        });
+
+        renderTable(filtered);
+      }
+
+      function resetFilters() {
+        searchOrderId.value = '';
+        searchProduct.value = '';
+        searchDate.value = '';
+        renderTable(orderData);
+      }
+
+      deleteButton.addEventListener('click', () => {
+        const selectedRow = document.querySelector('tr.selected');
+        if (selectedRow) {
+          const index = selectedRow.getAttribute('data-index');
+          orderData.splice(index, 1);
+          renderTable(orderData);
+        } else {
+          alert('Please select a row to delete.');
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

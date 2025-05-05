@@ -213,16 +213,6 @@
     th.desc::after {
       content: " ▼";
     }
-
-    .customer-form input:invalid,
-    .customer-form textarea:invalid {
-      border: 2px solid #e74c3c;
-    }
-
-    .customer-form input:valid,
-    .customer-form textarea:valid {
-      border: 2px solid #2ecc71;
-    }
   </style>
 </head>
 <body>
@@ -290,36 +280,36 @@
     const formContainer = document.querySelector('.customer-form-container');
     let customerData = [];
     let customerIdCounter = 1;
-  
+
     function toggleForm() {
       formContainer.style.display = formContainer.style.display === 'none' || formContainer.style.display === '' ? 'block' : 'none';
     }
-  
+
     customerForm.addEventListener('submit', function (e) {
       e.preventDefault();
-  
+
       const nameInput = document.getElementById('customer-name');
       const phoneInput = document.getElementById('phone');
       const addressInput = document.getElementById('address');
-  
+
       if (!nameInput.value || !phoneInput.value || !addressInput.value) {
         alert('Please fill out all fields before submitting.');
         return;
       }
-  
+
       const newCustomer = {
         id: customerIdCounter++,
         name: nameInput.value,
         phone: phoneInput.value,
         address: addressInput.value
       };
-  
+
       customerData.push(newCustomer);
       renderTable();
       customerForm.reset();
       formContainer.style.display = 'none';
     });
-  
+
     function renderTable() {
       customerTableBody.innerHTML = '';
       customerData.forEach((cust, index) => {
@@ -338,7 +328,7 @@
         customerTableBody.appendChild(row);
       });
     }
-  
+
     deleteButton.addEventListener('click', () => {
       const selectedRow = document.querySelector('tr.selected');
       if (selectedRow) {
@@ -349,7 +339,7 @@
         alert('Please select a row to delete.');
       }
     });
-  
+
     function searchCustomer() {
       const query = document.getElementById('searchInput').value.toLowerCase();
       const rows = document.querySelectorAll('#customer-table tbody tr');
@@ -358,16 +348,16 @@
         row.style.display = name.includes(query) ? '' : 'none';
       });
     }
-  
+
     document.querySelectorAll('#customer-table th').forEach((header, colIndex) => {
-      if (colIndex > 1) return
-  
+      if (colIndex > 1) return;
+
       header.style.cursor = 'pointer';
       header.addEventListener('click', () => {
         const isAscending = header.classList.contains('asc');
         document.querySelectorAll('#customer-table th').forEach(th => th.classList.remove('asc', 'desc'));
         header.classList.add(isAscending ? 'desc' : 'asc');
-  
+
         customerData.sort((a, b) => {
           const aValue = Object.values(a)[colIndex];
           const bValue = Object.values(b)[colIndex];
@@ -375,7 +365,7 @@
             ? aValue.toString().localeCompare(bValue.toString(), undefined, { numeric: true })
             : bValue.toString().localeCompare(aValue.toString(), undefined, { numeric: true });
         });
-  
+
         renderTable();
       });
     });

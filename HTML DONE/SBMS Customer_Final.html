@@ -152,7 +152,6 @@ li a:hover {
   border: 1px solid #bbb;
   background: #fff;
 }
-
 .submit-button {
   margin-top: 20px;
   padding: 12px;
@@ -165,42 +164,37 @@ li a:hover {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 .submit-button:hover {
   background-color: #b84300;
 }
-
-
+.submit-wrapper {
+  text-align: right;
+}
 table {
   width: 100%;
   border-collapse: collapse;
   font-family: 'Sen', sans-serif;
 }
-
 th, td {
       padding: 14px 16px;
       border: 1px solid #e2e8f0;
       text-align: left;
       font-size: 15px;
-    }
-
+}
 tr:hover {
   background-color: #fffbe6;
 }
-
 tr.selected {
   background-color: #ffefd5;
   font-weight: bold;
 }
-
 th.asc::after {
-      content: ' ▲';
-    }
+  content: ' ▲';
+}
 
-    th.desc::after {
-      content: ' ▼';
-    }
-
+th.desc::after {
+  content: ' ▼';
+}
   </style>
 </head>
 <body>
@@ -242,7 +236,9 @@ th.asc::after {
         <label for="address">Address:</label>
         <textarea id="address" name="address" rows="3" required></textarea>
       
-        <button type="submit" class="submit-button">Submit</button>
+        <div class="submit-wrapper">
+          <button type="submit" class="submit-button">Submit</button>
+        </div>
       </form>
     </div>
 
@@ -278,7 +274,7 @@ th.asc::after {
     function getNextCustomerId() {
       let idNumber;
       if (freedIds.length > 0) {
-        idNumber = freedIds.sort((a, b) => a - b).shift(); // reuse lowest available ID
+        idNumber = freedIds.sort((a, b) => a - b).shift();
       } else {
         idNumber = nextCustomerId++;
       }

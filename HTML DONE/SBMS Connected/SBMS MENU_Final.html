@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@700&family=Bricolage+Grotesque:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600&display=swap');
+
+      * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Sen', sans-serif;
+      background: linear-gradient(135deg, #f5e6ca, #ffeaa7);
+      color: #333;
+    }
+
+    nav {
+      background: #d35400;
+      padding: 0 20px;
+    }
+
+    .navigation-div {
+      max-width: 1200px;
+      margin: auto;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      height: 60px;
+      border-radius: 50%;
+      background-color: white;
+      padding: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav li a {
+      color: #fff;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav li a:hover {
+      color: #ffeaa7;
+    }
+
+    .nav-button {
+      background-color: #f39c12;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      width: 130px;
+      height: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background-color: #e67e22;
+    }
+
+      .menu-wrapper {
+        max-width: 1000px;
+        margin: 100px auto 50px;
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .menu-card {
+        width: 225px;
+      }
+
+      .menu-card-button {
+        background: none;
+        border: none;
+        padding: 0;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 24px;
+      }
+
+      .menu-card-content {
+        border-radius: 24px;
+        padding: 16px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff7e6;
+        box-shadow: 0 16px 56px -12px rgba(211, 84, 0, 0.2);
+        transition: background 0.3s ease;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-card-button:hover .menu-card-content {
+        background-color: #ffe0b3;
+      }
+
+      .menu-icon {
+        width: 122px;
+        height: 122px;
+        margin-bottom: 16px;
+      }
+
+      .menu-title {
+        color: #0d0c10;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: capitalize;
+      }
+
+      @media (max-width: 991px) {
+        .menu-grid {
+          grid-auto-flow: row;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          grid-template-rows: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navigation-top">
+      <div class="navigation-div">
+        <img src="https://i.ibb.co/60c2V5M5/485022833-1021832163206590-2049955099638617889-n.png" class="nav-logo" alt="Logo" />
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-button" onclick="window.location.href='SBMS Login_Final.html'">Sign Out</button>
+      </div>
+    </nav>
+
+    <div class="menu-wrapper">
+      <main class="menu-grid">
+        <article class="menu-card">
+          <button class="menu-card-button" onclick="window.location.href='SBMS Employee_Final.html'">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/n8LVnKQC/Employee.png" alt="Employee" class="menu-icon" />
+              <h2 class="menu-title">Employee</h2>
+            </div>
+          </button>
+        </article>
+
+        <article class="menu-card">
+          <button class="menu-card-button" onclick="window.location.href='SBMS Customer_Final.html'">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/PZdTmb35/Customer.png" alt="Customer" class="menu-icon" />
+              <h2 class="menu-title">Customer</h2>
+            </div>
+          </button>
+        </article>
+
+        <article class="menu-card">
+          <button class="menu-card-button" onclick="window.location.href='SBMS Product_Final.html'">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/rRx31wRN/Product.png" alt="Product" class="menu-icon" />
+              <h2 class="menu-title">Product</h2>
+            </div>
+          </button>
+        </article>
+
+        <article class="menu-card">
+          <button class="menu-card-button" onclick="window.location.href='SBMS Order_Final.html'">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/ZR2xsV1q/Order.png" alt="Order" class="menu-icon" />
+              <h2 class="menu-title">Order</h2>
+            </div>
+          </button>
+        </article>
+
+        <article class="menu-card">
+          <button class="menu-card-button" onclick="window.location.href='SBMS Payment_Final.html'">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/MKS50nw/Payment.png" alt="Payment" class="menu-icon" />
+              <h2 class="menu-title">Payment</h2>
+            </div>
+          </button>
+        </article>
+
+        <article class="menu-card">
+          <button class="menu-card-button">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/hFz1vbwj/Delivery.png" alt="Delivery" class="menu-icon" />
+              <h2 class="menu-title">Delivery</h2>
+            </div>
+          </button>
+        </article>
+
+        <article class="menu-card">
+          <button class="menu-card-button">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/9Hhv1XT5/Supply.png" alt="Supply" class="menu-icon" />
+              <h2 class="menu-title">Supply</h2>
+            </div>
+          </button>
+        </article>
+
+        <article class="menu-card">
+          <button class="menu-card-button" onclick="window.location.href='SBMS Sales Report_Final.html'">
+            <div class="menu-card-content">
+              <img src="https://i.ibb.co/bMgBFjcB/sales-logo.png" alt="Supply" class="menu-icon" />
+              <h2 class="menu-title">Sales Report</h2>
+            </div>
+          </button>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

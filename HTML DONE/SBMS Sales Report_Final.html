@@ -14,61 +14,90 @@
 
     body {
       font-family: 'Sen', sans-serif;
-      background: #ffffff;
-      overflow-x: hidden;
+      background: linear-gradient(135deg, #f5e6ca, #ffeaa7);
+      color: #333;
     }
 
-    .navigation-top {
-      text-decoration: none;
-      background: #222222;
-      padding: 0 15px;
+    nav {
+      background: #d35400;
+      padding: 0 20px;
     }
 
     .navigation-div {
+      max-width: 1200px;
+      margin: auto;
+      height: 90px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-weight: bold;
     }
 
     .nav-logo {
-      width: 90px;
-      height: 90px;
-      margin-left: 20px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: white;
+      padding: 5px;
     }
 
-    ul {
+    nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 30px;
     }
 
-    li a {
-      color: #ffffff;
-      font-size: 15px;
+    nav li a {
+      color: #fff;
+      font-size: 16px;
       text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav li a:hover {
+      color: #ffeaa7;
     }
 
     .nav-button {
-      background-color: #FDE6D4;
-      border-radius: 10px;
-      width: 150px;
-      height: 50px;
-      padding: 10px;
+      background-color: #f39c12;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      width: 130px;
+      height: 40px;
       font-weight: bold;
-      font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    .section {
-      max-width: 900px;
-      margin: 60px auto;
-      background: #ffffff;
-      padding: 32px;
+    .nav-button:hover {
+      background-color: #e67e22;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: #fffdf6;
       border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     }
 
+    .previous-button {
+      padding: 12px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background-color: #d35400;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border-radius: 50px;
+      font-style: italic;
+    }
+
+    .previous-button:hover {
+      background-color: #b84300;
+      color: #ffffff;
+    }
     h1 {
       text-align: center;
       font-size: 36px;
@@ -92,7 +121,7 @@
     }
 
     .form button {
-      background-color: #222;
+      background-color: #d35400;
       color: #fff;
       border: none;
       padding: 10px 20px;
@@ -114,13 +143,13 @@
     }
 
     .table th {
-      background-color: #222;
+      background-color: #d35400;
       color: #fff;
     }
 
     .delete-button {
-      background: red;
-      border: none;
+      background: white;
+      border: 1;
       padding: 6px 12px;
       border-radius: 6px;
       font-weight: bold;
@@ -159,7 +188,8 @@
     </div>
   </nav>
 
-  <section class="section">
+  <section class="container">
+    <button class="previous-button">Previous</button>
     <h1>Sales Report</h1>
     <form class="form" onsubmit="event.preventDefault(); addProduct();">
       <input type="date" id="saleDate" required />

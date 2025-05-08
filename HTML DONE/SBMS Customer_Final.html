@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Customer</title>
+  <title>Customer Management</title>
   <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
   <style>
    @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600;700&display=swap');
@@ -16,12 +16,12 @@
 
 body {
   font-family: 'Sen', sans-serif;
-  background-color: #f5f7fa;
-  color: #222;
+  background: linear-gradient(135deg, #f5e6ca, #ffeaa7);
+  color: #333;
 }
 
 .navigation-top {
-  background: #222;
+  background: #d35400;
   padding: 0 20px;
 }
 
@@ -36,6 +36,9 @@ body {
 
 .nav-logo {
   height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 5px;
 }
 
 ul {
@@ -48,34 +51,34 @@ li a {
   color: #fff;
   font-size: 16px;
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  font-weight: 600;
 }
 
 li a:hover {
-  color: #00c2ff;
+  color: #ffeaa7;
 }
 
 .nav-button {
-  background-color: #00c2ff;
-  color: white;
+  background-color: #f39c12;
+  color: #fff;
   border: none;
   border-radius: 25px;
   width: 130px;
   height: 40px;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #00a4d6;
+  background-color: #e67e22;
 }
 
-.background-container {
+.container {
   max-width: 1100px;
   margin: 40px auto;
   padding: 40px;
-  background-color: #ffffff;
+  background-color: #fffdf6;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
@@ -92,18 +95,19 @@ li a:hover {
 .delete-button,
 .previous-button {
   padding: 12px 20px;
-  font-weight: 600;
-  border: 1px solid #ccc;
+  font-weight: bold;
+  border: none;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: #d35400;
+  color: white;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.3s ease;
 }
 
 .toggle-form-button:hover,
 .delete-button:hover,
 .previous-button:hover {
-  background-color: #eaeaea;
+  background-color: #e67e22;
 }
 
 .previous-button {
@@ -116,20 +120,21 @@ li a:hover {
 }
 
 .search-bar input {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
   width: 100%;
-  max-width: 350px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  max-width: 300px;
+  font-size: 15px;
 }
 
 .customer-form-container {
   display: none;
-  background: #f0f0f0;
+  background: #fffdf6;
   padding: 25px;
   border-radius: 10px;
   margin: 20px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .customer-form label {
@@ -145,12 +150,13 @@ li a:hover {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #bbb;
+  background: #fff;
 }
 
 .submit-button {
   margin-top: 20px;
   padding: 12px;
-  background-color: #222222;
+  background-color: #d35400;
   color: white;
   border: none;
   border-radius: 8px;
@@ -161,17 +167,9 @@ li a:hover {
 }
 
 .submit-button:hover {
-  background-color: #00a4d6;
+  background-color: #b84300;
 }
 
-.customer-table-container {
-  margin-top: 30px;
-  overflow-x: auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
 
 table {
   width: 100%;
@@ -179,42 +177,29 @@ table {
   font-family: 'Sen', sans-serif;
 }
 
-th,
-td {
-  padding: 20px;
-  text-align: left;
-  font-size: 16px;
-  border-bottom: 1px solid #eee;
-}
-
-th {
-  background-color: #f4f6f8;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  position: relative;
-}
+th, td {
+      padding: 14px 16px;
+      border: 1px solid #e2e8f0;
+      text-align: left;
+      font-size: 15px;
+    }
 
 tr:hover {
-  background-color: #f9f9f9;
+  background-color: #fffbe6;
 }
 
 tr.selected {
-  background-color: #dbeafe;
+  background-color: #ffefd5;
   font-weight: bold;
 }
 
 th.asc::after {
-  content: " ▲";
-  position: absolute;
-  right: 10px;
-}
+      content: ' ▲';
+    }
 
-th.desc::after {
-  content: " ▼";
-  position: absolute;
-  right: 10px;
-}
+    th.desc::after {
+      content: ' ▼';
+    }
 
   </style>
 </head>
@@ -231,7 +216,7 @@ th.desc::after {
     </div>
   </nav>
 
-  <div class="background-container">
+  <div class="container">
     <div class="header-button-wrapper">
       <div class="left-buttons">
         <button class="previous-button">Previous</button>
@@ -281,38 +266,50 @@ th.desc::after {
     const customerTableBody = document.querySelector('#customer-table tbody');
     const deleteButton = document.querySelector('.delete-button');
     const formContainer = document.querySelector('.customer-form-container');
+  
     let customerData = [];
-    let customerIdCounter = 1;
-
+    let freedIds = [];
+    let nextCustomerId = 1;
+  
     function toggleForm() {
       formContainer.style.display = formContainer.style.display === 'none' || formContainer.style.display === '' ? 'block' : 'none';
     }
-
+  
+    function getNextCustomerId() {
+      let idNumber;
+      if (freedIds.length > 0) {
+        idNumber = freedIds.sort((a, b) => a - b).shift(); // reuse lowest available ID
+      } else {
+        idNumber = nextCustomerId++;
+      }
+      return `C${idNumber.toString().padStart(3, '0')}`;
+    }
+  
     customerForm.addEventListener('submit', function (e) {
       e.preventDefault();
-
+  
       const nameInput = document.getElementById('customer-name');
       const phoneInput = document.getElementById('phone');
       const addressInput = document.getElementById('address');
-
+  
       if (!nameInput.value || !phoneInput.value || !addressInput.value) {
         alert('Please fill out all fields before submitting.');
         return;
       }
-
+  
       const newCustomer = {
-        id: customerIdCounter++,
+        id: getNextCustomerId(),
         name: nameInput.value,
         phone: phoneInput.value,
         address: addressInput.value
       };
-
+  
       customerData.push(newCustomer);
       renderTable();
       customerForm.reset();
       formContainer.style.display = 'none';
     });
-
+  
     function renderTable() {
       customerTableBody.innerHTML = '';
       customerData.forEach((cust, index) => {
@@ -331,18 +328,22 @@ th.desc::after {
         customerTableBody.appendChild(row);
       });
     }
-
+  
     deleteButton.addEventListener('click', () => {
       const selectedRow = document.querySelector('tr.selected');
       if (selectedRow) {
         const index = selectedRow.getAttribute('data-index');
-        customerData.splice(index, 1);
+        const removed = customerData.splice(index, 1)[0];
+  
+        const idNumber = parseInt(removed.id.substring(1));
+        freedIds.push(idNumber);
+  
         renderTable();
       } else {
         alert('Please select a row to delete.');
       }
     });
-
+  
     function searchCustomer() {
       const query = document.getElementById('searchInput').value.toLowerCase();
       const rows = document.querySelectorAll('#customer-table tbody tr');
@@ -351,16 +352,16 @@ th.desc::after {
         row.style.display = name.includes(query) ? '' : 'none';
       });
     }
-
+  
     document.querySelectorAll('#customer-table th').forEach((header, colIndex) => {
       if (colIndex > 1) return;
-
+  
       header.style.cursor = 'pointer';
       header.addEventListener('click', () => {
         const isAscending = header.classList.contains('asc');
         document.querySelectorAll('#customer-table th').forEach(th => th.classList.remove('asc', 'desc'));
         header.classList.add(isAscending ? 'desc' : 'asc');
-
+  
         customerData.sort((a, b) => {
           const aValue = Object.values(a)[colIndex];
           const bValue = Object.values(b)[colIndex];
@@ -368,10 +369,10 @@ th.desc::after {
             ? aValue.toString().localeCompare(bValue.toString(), undefined, { numeric: true })
             : bValue.toString().localeCompare(aValue.toString(), undefined, { numeric: true });
         });
-
+  
         renderTable();
       });
     });
-  </script>
+  </script>  
 </body>
 </html>

@@ -130,7 +130,7 @@
 
     .table-header {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       background-color: #d35400;
       color: white;
       padding: 12px 0;
@@ -146,7 +146,7 @@
 
     .table-row {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       padding: 12px;
       border-bottom: 1px solid #ddd;
       align-items: center;
@@ -207,11 +207,11 @@
     @media (max-width: 768px) {
       .table-header,
       .table-row {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
       }
 
-      .table-header div:nth-child(5),
-      .table-row div:nth-child(5) {
+      .table-header div:nth-child(6),
+      .table-row div:nth-child(6) {
         display: none;
       }
     }
@@ -237,7 +237,8 @@
 
     <div class="table-container">
       <div class="table-header">
-        <div>Payor Name</div>
+        <div>Payment ID</div>
+        <div>Customer ID</div>
         <div>Amount</div>
         <div>Date</div>
         <div>Payment Method</div>
@@ -245,7 +246,8 @@
       </div>
       <div class="table-body">
         <div class="table-row" id="paymentInputRow">
-          <div><input type="text" id="PayorName" placeholder="Payor Name"></div>
+          <div><input type="text" id="paymentID" readonly placeholder="Payment ID" value="P0001"></div>
+          <div><input type="text" id="customerID" placeholder="Customer ID"></div>
           <div><input type="number" id="amount" placeholder="Amount"></div>
           <div><input type="date" id="date"></div>
           <div>
@@ -264,7 +266,8 @@
 
     <div class="submitted-payments">
       <div class="table-header">
-        <div>Payor Name</div>
+        <div>Payment ID</div>
+        <div>Customer ID</div>
         <div>Amount</div>
         <div>Date</div>
         <div>Payment Method</div>
@@ -275,40 +278,69 @@
   </div>
 
   <script>
+    let paymentIDCounter = 1;
+    const reusableIDs = [];
+  
     function submitPayment() {
-      const name = document.getElementById('PayorName').value;
-      const amount = document.getElementById('amount').value;
+      const customerID = document.getElementById('customerID').value.trim();
+      const amount = parseFloat(document.getElementById('amount').value);
       const date = document.getElementById('date').value;
       const method = document.getElementById('paymentMethod').value;
-
-      if (!name || !amount || !date || !method) {
-        alert("Please fill out all fields.");
+  
+      if (!customerID || amount <= 0 || !date || !method) {
+        alert("Please fill out all fields with valid values.");
         return;
       }
-
+  
+      let paymentID;
+      if (reusableIDs.length > 0) {
+        reusableIDs.sort();
+        paymentID = reusableIDs.shift();
+      } else {
+        paymentID = `P${String(paymentIDCounter).padStart(4, '0')}`;
+        paymentIDCounter++;
+      }
+  
       const submittedTable = document.getElementById('submittedTable');
       const newRow = document.createElement('div');
       newRow.classList.add('table-row');
+      newRow.setAttribute('data-payment-id', paymentID);
       newRow.innerHTML = `
-        <div>${name}</div>
-        <div>${amount}</div>
+        <div>${paymentID}</div>
+        <div>${customerID}</div>
+        <div>₱${amount.toFixed(2)}</div>
         <div>${date}</div>
         <div>${method}</div>
         <div><button class="delete-button" onclick="deleteRow(this)">Delete</button></div>
       `;
       submittedTable.appendChild(newRow);
-
-      document.getElementById('PayorName').value = '';
+  
+      document.getElementById('customerID').value = '';
       document.getElementById('amount').value = '';
       document.getElementById('date').value = '';
       document.getElementById('paymentMethod').value = '';
+  
+      updateNextPaymentID();
     }
-
+  
     function deleteRow(button) {
       const row = button.closest('.table-row');
+      const paymentID = row.getAttribute('data-payment-id');
       row.remove();
+      reusableIDs.push(paymentID);
+      updateNextPaymentID();
     }
-  </script>
-
+  
+    function updateNextPaymentID() {
+      let nextID;
+      if (reusableIDs.length > 0) {
+        reusableIDs.sort();
+        nextID = reusableIDs[0];
+      } else {
+        nextID = `P${String(paymentIDCounter).padStart(4, '0')}`;
+      }
+      document.getElementById('paymentID').value = nextID;
+    }
+  </script>  
 </body>
 </html>

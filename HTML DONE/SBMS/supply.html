@@ -390,7 +390,7 @@
         </div>
         <div class="form-actions">
           <button class="action-button" style="background-color: #95a5a6;" id="cancelBtn">Cancel</button>
-          <button class="action-button" id="saveBtn">Save Supply</button>
+          <button type="button" class="action-button" onclick="saveSupply()">Save</button>
         </div>
       </div>
     </main>
@@ -399,246 +399,107 @@
   <div class="notification" id="notification"></div>
 
   <script>
-    let supplies = [
-      { id: 'SUP-1001', supplier: 'Golden Poultry Farm', product: 'Whole Chicken', quantity: '50 kg', date: '2025-05-10', price: '₱4,500' },
-      { id: 'SUP-1002', supplier: 'Fresh Chicken Co.', product: 'Chicken Feet', quantity: '30 kg', date: '2025-05-08', price: '₱2,100' },
-      { id: 'SUP-1003', supplier: 'Prime Poultry', product: 'Chicken Liver', quantity: '20 kg', date: '2025-05-05', price: '₱1,800' }
-    ];
+  const supplies = [];
+  let editingIndex = -1;
 
-    const supplyTableBody = document.getElementById('supplyTableBody');
-    const supplyForm = document.getElementById('supplyForm');
-    const formTitle = document.getElementById('formTitle');
-    const supplyIdInput = document.getElementById('supply-id');
-    const supplierInput = document.getElementById('supplier');
-    const productInput = document.getElementById('product');
-    const quantityInput = document.getElementById('quantity');
-    const dateInput = document.getElementById('date');
-    const priceInput = document.getElementById('price');
-    const addNewSupplyBtn = document.getElementById('addNewSupplyBtn');
-    const saveBtn = document.getElementById('saveBtn');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    const notification = document.getElementById('notification');
+  const tableBody = document.getElementById('supplyTableBody');
+  const form = document.getElementById('supplyForm');
+  const formTitle = document.getElementById('formTitle');
+  const addNewBtn = document.getElementById('addNewSupplyBtn');
+  const searchInput = document.getElementById('searchInput');
 
-    let currentMode = 'add';
-    let currentEditId = null;
+  const idInput = document.getElementById('supply-id');
+  const supplierInput = document.getElementById('supplier');
+  const productInput = document.getElementById('product');
+  const quantityInput = document.getElementById('quantity');
+  const dateInput = document.getElementById('date');
+  const priceInput = document.getElementById('price');
 
-    document.addEventListener('DOMContentLoaded', () => {
-      renderSupplyTable();
-      setDefaultDate();
-      
-      addNewSupplyBtn.addEventListener('click', showAddForm);
-      saveBtn.addEventListener('click', saveSupply);
-      cancelBtn.addEventListener('click', hideForm);
-      searchBtn.addEventListener('click', searchSupplies);
-      searchInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-          searchSupplies();
-        }
-      });
-      
-      quantityInput.addEventListener('input', calculatePrice);
+  addNewBtn.addEventListener('click', () => {
+    editingIndex = -1;
+    clearForm();
+    idInput.value = 'SUP' + (Date.now()).toString().slice(-5); 
+    formTitle.textContent = 'Add New Supply';
+    form.classList.remove('hidden');
+  });
+
+  function renderTable(data) {
+    tableBody.innerHTML = '';
+    data.forEach((supply, index) => {
+      const row = `<tr>
+        <td>${supply.id}</td>
+        <td>${supply.supplier}</td>
+        <td>${supply.product}</td>
+        <td>${supply.quantity}</td>
+        <td>${supply.date}</td>
+        <td>${supply.price}</td>
+        <td>
+          <button class="action-btn" onclick="editSupply(${index})">Edit</button>
+          <button class="action-btn delete-btn" onclick="deleteSupply(${index})">Delete</button>
+        </td>
+      </tr>`;
+      tableBody.insertAdjacentHTML('beforeend', row);
     });
+  }
 
-    function renderSupplyTable(data = supplies) {
-      supplyTableBody.innerHTML = '';
-      
-      if (data.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="7" style="text-align: center;">No supplies found</td>`;
-        supplyTableBody.appendChild(row);
-        return;
-      }
-      
-      data.forEach(supply => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${supply.id}</td>
-          <td>${supply.supplier}</td>
-          <td>${supply.product}</td>
-          <td>${supply.quantity}</td>
-          <td>${supply.date}</td>
-          <td>${supply.price}</td>
-          <td>
-            <button class="action-btn edit-btn" data-id="${supply.id}">Edit</button>
-            <button class="action-btn delete-btn" data-id="${supply.id}">Delete</button>
-          </td>
-        `;
-        supplyTableBody.appendChild(row);
-      });
-      
-      document.querySelectorAll('.edit-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.target.getAttribute('data-id');
-          editSupply(id);
-        });
-      });
-      
-      document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.target.getAttribute('data-id');
-          deleteSupply(id);
-        });
-      });
+  function saveSupply() {
+    const newSupply = {
+      id: idInput.value,
+      supplier: supplierInput.value,
+      product: productInput.value,
+      quantity: quantityInput.value,
+      date: dateInput.value,
+      price: priceInput.value
+    };
+
+    if (editingIndex > -1) {
+      supplies[editingIndex] = newSupply;
+    } else {
+      supplies.push(newSupply);
     }
 
-    function showAddForm() {
-      currentMode = 'add';
-      formTitle.textContent = 'Add New Supply';
-      supplyIdInput.value = generateSupplyId();
-      supplierInput.value = '';
-      productInput.value = 'Whole Chicken';
-      quantityInput.value = '';
-      dateInput.value = getCurrentDate();
-      priceInput.value = '';
-      supplyForm.classList.remove('hidden');
-      
-      supplyForm.scrollIntoView({ behavior: 'smooth' });
-    }
+    renderTable(supplies);
+    form.classList.add('hidden');
+  }
 
-    function editSupply(id) {
-      currentMode = 'edit';
-      currentEditId = id;
-      formTitle.textContent = 'Edit Supply';
-      
-      const supply = supplies.find(s => s.id === id);
-      if (supply) {
-        supplyIdInput.value = supply.id;
-        supplierInput.value = supply.supplier;
-        productInput.value = supply.product;
-        quantityInput.value = supply.quantity.split(' ')[0];
-        dateInput.value = supply.date;
-        priceInput.value = supply.price.replace('₱', '').replace(',', '');
-      }
-      
-      supplyForm.classList.remove('hidden');
-      
-      supplyForm.scrollIntoView({ behavior: 'smooth' });
-    }
+  window.editSupply = (index) => {
+    const s = supplies[index];
+    idInput.value = s.id;
+    supplierInput.value = s.supplier;
+    productInput.value = s.product;
+    quantityInput.value = s.quantity;
+    dateInput.value = s.date;
+    priceInput.value = s.price;
 
-    function hideForm() {
-      supplyForm.classList.add('hidden');
-    }
+    editingIndex = index;
+    formTitle.textContent = 'Edit Supply';
+    form.classList.remove('hidden');
+  };
 
-    function saveSupply() {
-      if (!supplierInput.value) {
-        showNotification('Please select a supplier', true);
-        return;
-      }
-      
-      if (!quantityInput.value || isNaN(quantityInput.value) || quantityInput.value <= 0) {
-        showNotification('Please enter a valid quantity', true);
-        return;
-      }
-      
-      if (!dateInput.value) {
-        showNotification('Please select a date', true);
-        return;
-      }
-    
-      if (!priceInput.value || isNaN(priceInput.value.replace(',', ''))) {
-        showNotification('Please enter a valid price', true);
-        return;
-      }
-      
-      const supplyData = {
-        id: supplyIdInput.value,
-        supplier: supplierInput.value,
-        product: productInput.value,
-        quantity: `${quantityInput.value} kg`,
-        date: dateInput.value,
-        price: `₱${parseFloat(priceInput.value).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
-      };
-      
-      if (currentMode === 'add') {
-        supplies.unshift(supplyData);
-        showNotification('Supply added successfully');
-      } else {
-        const index = supplies.findIndex(s => s.id === currentEditId);
-        if (index !== -1) {
-          supplies[index] = supplyData;
-          showNotification('Supply updated successfully');
-        }
-      }
-      
-      renderSupplyTable();
-      hideForm();
+  window.deleteSupply = (index) => {
+    if (confirm('Delete this supply?')) {
+      supplies.splice(index, 1);
+      renderTable(supplies);
     }
+  };
 
-    function deleteSupply(id) {
-      if (confirm('Are you sure you want to delete this supply record?')) {
-        supplies = supplies.filter(s => s.id !== id);
-        renderSupplyTable();
-        showNotification('Supply deleted successfully');
-      }
-    }
+  document.getElementById('searchBtn').addEventListener('click', () => {
+    const term = searchInput.value.toLowerCase();
+    const filtered = supplies.filter(s =>
+      s.supplier.toLowerCase().includes(term) ||
+      s.product.toLowerCase().includes(term)
+    );
+    renderTable(filtered);
+  });
 
-    function searchSupplies() {
-      const searchTerm = searchInput.value.toLowerCase();
-      if (!searchTerm) {
-        renderSupplyTable();
-        return;
-      }
-      
-      const filtered = supplies.filter(supply => 
-        supply.supplier.toLowerCase().includes(searchTerm) || 
-        supply.product.toLowerCase().includes(searchTerm) ||
-        supply.id.toLowerCase().includes(searchTerm)
-      );
-      
-      renderSupplyTable(filtered);
-    }
+  function clearForm() {
+    supplierInput.value = '';
+    productInput.value = '';
+    quantityInput.value = '';
+    dateInput.value = '';
+    priceInput.value = '';
+  }
+</script>
 
-    function calculatePrice() {
-      if (!quantityInput.value || isNaN(quantityInput.value)) return;
-      
-      const quantity = parseFloat(quantityInput.value);
-      const product = productInput.value;
-      
-      const prices = {
-        'Whole Chicken': 90,
-        'Chicken Feet': 70,
-        'Chicken Head': 50,
-        'Chicken Liver': 90,
-        'Chicken Intestine': 60,
-        'Chicken Blood': 40,
-        'Chicken Gizzard': 80
-      };
-      
-      if (prices[product]) {
-        const total = quantity * prices[product];
-        priceInput.value = total.toFixed(2);
-      }
-    }
-
-    function generateSupplyId() {
-      const lastId = supplies.length > 0 ? 
-        parseInt(supplies[0].id.split('-')[1]) : 1000;
-      return `SUP-${lastId + 1}`;
-    }
-
-    function setDefaultDate() {
-      dateInput.value = getCurrentDate();
-    }
-
-    function getCurrentDate() {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, '0');
-      const day = String(today.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
-    }
-
-    function showNotification(message, isError = false) {
-      notification.textContent = message;
-      notification.className = 'notification' + (isError ? ' error' : '');
-      notification.classList.add('show');
-      
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 3000);
-    }
-  </script>
 </body>
 </html>

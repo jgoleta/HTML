@@ -284,7 +284,7 @@
         <div class="forgot-link">
           <a href="#">Forgot Password?</a>
         </div>
-        <button type="submit" class="btn" onclick="window.location.href='home.html'">Login</button>
+        <button type="button" class="btn" onclick="window.location.href='{% url 'webpage3' %}'">Login</button>
         <p>or login with</p>
         <div class="social-icons">
           <a href="#"><i class='bx bxl-google'></i></a>
@@ -323,8 +323,9 @@
       </div>
       <div class="toggle-panel toggle-right">
         <h1>🥚 Welcome Back!</h1>
-        <p>Already have an account?</p>
-        <button class="btn login-btn">Login</button>
+        <p style="margin-top: 20px;">Already have an account? 
+          <a href="{% url 'webpage6' %}" class="signup-link" style="font-weight: bold; color: #d35400;">Sign up</a>
+        </p>
       </div>
     </div>
   </div>

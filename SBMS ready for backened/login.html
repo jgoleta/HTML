@@ -98,6 +98,11 @@
       transform: translateY(-50%);
       font-size: 20px;
     }
+    .indicator {
+      display: flex;
+      align-items: flex-start;
+      font-weight: bold;
+    }
 
     .forgot-link {
       margin: -15px 0 15px;
@@ -280,10 +285,12 @@
       <form action="#">
         <h1>Login</h1>
         <div class="input-box">
+          <div class="indicator">Email Address:</div>
           <input type="text" placeholder="Email" required />
           <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
+          <div class="indicator">Password:</div>
           <input type="password" placeholder="Password" required />
           <i class='bx bxs-lock-alt'></i>
         </div>
@@ -302,14 +309,17 @@
       <form action="#">
         <h1>Registration</h1>
         <div class="input-box">
+          <div class="indicator">Username:</div>
           <input type="text" placeholder="Username" required />
           <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
+          <div class="indicator">Email Address:</div>
           <input type="email" placeholder="Email" required />
           <i class='bx bxs-envelope'></i>
         </div>
         <div class="input-box">
+          <div class="indicator">Password:</div>
           <input type="password" placeholder="Password" required />
           <i class='bx bxs-lock-alt'></i>
         </div>

@@ -223,6 +223,32 @@
       color: #fff;
     }
 
+    .notification {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2ecc71;
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      font-size: 1.1rem;
+      font-weight: 600;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .notification.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .notification.error {
+      background: #e74c3c;
+      color: #fff;
+    }
+
     @media screen and (max-width: 650px) {
       .container {
         height: calc(100vh - 40px);
@@ -280,6 +306,7 @@
   </style>
 </head>
 <body>
+  <div id="notification" class="notification"></div>
   <div class="container">
     <div class="form-box login">
       <form action="#">
@@ -287,12 +314,10 @@
         <div class="input-box">
           <div class="indicator">Email Address:</div>
           <input type="text" placeholder="Email" required />
-          <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
           <div class="indicator">Password:</div>
           <input type="password" placeholder="Password" required />
-          <i class='bx bxs-lock-alt'></i>
         </div>
         <div class="forgot-link">
           <a href="#">Forgot Password?</a>
@@ -306,22 +331,23 @@
     </div>
 
     <div class="form-box register">
-      <form action="#">
+      <form action="#" onsubmit="return validateRegisterForm()">
         <h1>Registration</h1>
         <div class="input-box">
           <div class="indicator">Username:</div>
           <input type="text" placeholder="Username" required />
-          <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
           <div class="indicator">Email Address:</div>
           <input type="email" placeholder="Email" required />
-          <i class='bx bxs-envelope'></i>
         </div>
         <div class="input-box">
           <div class="indicator">Password:</div>
-          <input type="password" placeholder="Password" required />
-          <i class='bx bxs-lock-alt'></i>
+          <input type="password" id="register-password" placeholder="Password" required />
+        </div>
+        <div class="input-box">
+          <div class="indicator">Confirm Password:</div>
+          <input type="password" id="register-confirm-password" placeholder="Confirm Password" required />
         </div>
         <button type="submit" class="btn">Register</button>
         <p>or register with</p>
@@ -357,6 +383,37 @@
     loginBtn.addEventListener('click', () => {
       container.classList.remove('active');
     });
+
+    function validateRegisterForm() {
+      const password = document.getElementById('register-password').value;
+      const confirmPassword = document.getElementById('register-confirm-password').value;
+      const passwordValid = password.length >= 8 && /\d/.test(password);
+      if (!passwordValid) {
+        showNotification('Password must be at least 8 characters long and contain at least one number.', true);
+        return false;
+      }
+      if (password !== confirmPassword) {
+        showNotification('Passwords do not match.', true);
+        return false;
+      }
+      showNotification('Account successfully created!', false);
+      return true;
+    }
+
+    function showNotification(message, isError = false) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      if (isError) {
+        notification.classList.add('error');
+      } else {
+        notification.classList.remove('error');
+      }
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+        notification.classList.remove('error');
+      }, 3000);
+    }
   </script>
 </body>
 </html>
